@@ -3,6 +3,7 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../fire";
 
 const Home = ({ setUser, setAuthState }) => {
+	const []
   function handleSignOut() {
     signOut(auth)
       .then(() => {
