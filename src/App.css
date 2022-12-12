@@ -10,7 +10,6 @@ body {
   justify-content: center;
   display: flex;
   margin-top: 10%;
-  background-color: lightblue;
 }
 
 .container {
@@ -67,7 +66,6 @@ span {
   left: 0;
   top: 0;
   height: 100vh;
-  background-color: lightblue;
   width: 100%;
   padding: 20px;
 }

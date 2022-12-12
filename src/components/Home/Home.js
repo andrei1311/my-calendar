@@ -14,9 +14,9 @@ const Home = ({ setUser, setAuthState }) => {
       });
   }
   return (
-    <div className="home">
-      <h1>This is Home</h1>
-      <button className="logout-btn" onClick={handleSignOut}>
+    <div className="home bg-blue-600">
+      <h1 className="text-2xl">This is Home</h1>
+      <button className="logout-btn " onClick={handleSignOut}>
         LogOut
       </button>
     </div>
