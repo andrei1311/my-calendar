@@ -1,24 +1,12 @@
 import React from "react";
-import { signOut } from "firebase/auth";
-import { auth } from "../../fire";
+import Navbar from "../Navbar/Navbar";
 
-const Home = ({ setUser, setAuthState }) => {
-  function handleSignOut() {
-    signOut(auth)
-      .then(() => {
-        setUser(null);
-        setAuthState("login");
-      })
-      .catch((err) => {
-        alert(err);
-      });
-  }
+const Home = () => {
   return (
     <div className="home bg-blue-600">
+      <Navbar />
       <h1 className="text-2xl">This is Home</h1>
-      <button className="logout-btn " onClick={handleSignOut}>
-        LogOut
-      </button>
+      <button className="logout-btn ">LogOut</button>
     </div>
   );
 };
