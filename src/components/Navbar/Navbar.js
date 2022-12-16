@@ -1,10 +1,11 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Logo from "../../assets/img/Your Agenda.png";
-
+import "./Navbar.css";
 import { signOut } from "firebase/auth";
 import { auth } from "../../fire";
+import ReactModal from "react-modal";
 
 const navigation = [
   { name: "Dashboard", href: "#", current: true },
@@ -28,11 +29,13 @@ export default function Example({ setUser, setAuthState }) {
         alert(err);
       });
   }
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure as="nav" className="bg-transparent">
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+          <div className="mx-auto px-2 sm:px-6 lg:px-8">
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
@@ -53,44 +56,25 @@ export default function Example({ setUser, setAuthState }) {
                     alt="Your Company"
                   />
                   <img
-                    className="hidden h-16 w-auto lg:block"
+                    className="hidden h-16 w-auto lg:block mt-1 "
                     src={Logo}
                     alt="Your Company"
                   />
-                </div>
-                <div className="hidden sm:ml-6 sm:block">
-                  <div className="flex space-x-4">
-                    {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className={classNames(
-                          item.current
-                            ? "bg-gray-900 text-white"
-                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                          "px-3 py-2 rounded-md text-sm font-medium"
-                        )}
-                        aria-current={item.current ? "page" : undefined}
-                      >
-                        {item.name}
-                      </a>
-                    ))}
-                  </div>
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button
                   type="button"
-                  className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                  className="rounded-full bg-transparent p-1 text-gray-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                 >
                   <span className="sr-only">View notifications</span>
-                  <BellIcon className="h-6 w-6" aria-hidden="true" />
+                  <BellIcon className="h-8 w-8" aria-hidden="true" />
                 </button>
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
                   <div>
-                    <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                    <Menu.Button className="flex rounded-full bg-transparent text-gray-800  hover:text-white text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="sr-only">Open user menu</span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -98,7 +82,7 @@ export default function Example({ setUser, setAuthState }) {
                         viewBox="0 0 24 24"
                         strokeWidth={1.5}
                         stroke="currentColor"
-                        className="w-6 h-6 text-gray-400"
+                        className="w-8 h-8"
                       >
                         <path
                           strokeLinecap="round"
@@ -127,7 +111,13 @@ export default function Example({ setUser, setAuthState }) {
                               "block px-4 py-2 text-sm text-gray-700"
                             )}
                           >
-                            Your Profile
+                            <button
+                              className="primaryBtn"
+                              onClick={() => setIsOpen(true)}
+                            >
+                              Open Modal
+                            </button>
+                            {isOpen && <ReactModal setIsOpen={setIsOpen} />}
                           </a>
                         )}
                       </Menu.Item>
