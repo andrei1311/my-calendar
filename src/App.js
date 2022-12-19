@@ -3,6 +3,7 @@ import "./App.css";
 import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import Register from "./components/Resgister/Register";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./fire";
