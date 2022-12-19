@@ -5,7 +5,7 @@ import Logo from "../../assets/img/Your Agenda.png";
 import "./Navbar.css";
 import { signOut } from "firebase/auth";
 import { auth } from "../../fire";
-import ReactModal from "react-modal";
+import "./navModal.css";
 
 const navigation = [
   { name: "Dashboard", href: "#", current: true },
@@ -29,7 +29,18 @@ export default function Example({ setUser, setAuthState }) {
         alert(err);
       });
   }
-  const [isOpen, setIsOpen] = useState(false);
+
+  const [modal, setModal] = useState(false);
+
+  const toggleModal = () => {
+    setModal(!modal);
+  };
+
+  if (modal) {
+    document.body.classList.add("active-modal");
+  } else {
+    document.body.classList.remove("active-modal");
+  }
 
   return (
     <Disclosure as="nav" className="bg-transparent">
@@ -77,6 +88,7 @@ export default function Example({ setUser, setAuthState }) {
                     <Menu.Button className="flex rounded-full bg-transparent text-gray-800  hover:text-white text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="sr-only">Open user menu</span>
                       <svg
+                        onClick={toggleModal}
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
@@ -111,13 +123,26 @@ export default function Example({ setUser, setAuthState }) {
                               "block px-4 py-2 text-sm text-gray-700"
                             )}
                           >
-                            <button
-                              className="primaryBtn"
-                              onClick={() => setIsOpen(true)}
-                            >
-                              Open Modal
-                            </button>
-                            {isOpen && <ReactModal setIsOpen={setIsOpen} />}
+                            <div>
+                              {modal && (
+                                <div className="modal">
+                                  <div
+                                    className="overlay"
+                                    onClick={toggleModal}
+                                  ></div>
+                                  <div className="modal-content">
+                                    <h1>Change password</h1>
+
+                                    <button
+                                      className="close-modal"
+                                      onClick={toggleModal}
+                                    >
+                                      X
+                                    </button>
+                                  </div>
+                                </div>
+                              )}
+                            </div>
                           </a>
                         )}
                       </Menu.Item>
