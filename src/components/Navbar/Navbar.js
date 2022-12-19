@@ -132,7 +132,23 @@ export default function Example({ setUser, setAuthState }) {
                                   ></div>
                                   <div className="modal-content">
                                     <h1>Change password</h1>
-
+                                    <div>
+                                      <label>Old password</label>
+                                      <input
+                                        type="password"
+                                        placeholder="Old password"
+                                      />
+                                      <label>New password</label>
+                                      <input
+                                        type="password"
+                                        placeholder="Password"
+                                      />
+                                      <label>Confirm password</label>
+                                      <input
+                                        type="password"
+                                        placeholder="Password"
+                                      />
+                                    </div>
                                     <button
                                       className="close-modal"
                                       onClick={toggleModal}
