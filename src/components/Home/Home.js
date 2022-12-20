@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import Navbar from "../Navbar/Navbar";
+import Calendar from "../Calendar/Calendar";
 
 const Home = () => {
   return (
-    <div className="home bg-blue-600">
+    <div className="home">
       <Navbar />
-      <h1 className="text-2xl">This is Home</h1>
-      <button className="logout-btn ">LogOut</button>
+      <Calendar />
     </div>
   );
 };

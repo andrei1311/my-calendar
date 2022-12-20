@@ -1,6 +1,7 @@
 import * as React from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../fire";
+import RegisterImg from "../../assets/img/register.jpg";
 
 const Register = ({ setAuthState, setUser }) => {
   const [email, setEmail] = React.useState("");
@@ -24,65 +25,74 @@ const Register = ({ setAuthState, setUser }) => {
   };
 
   return (
-    <div>
-      <section class="h-screen">
-        <div class="px-6 h-full text-gray-800">
-          <div class="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6">
-            <div class="grow-0 shrink-1 md:shrink-0 basis-auto xl:w-6/12 lg:w-6/12 md:w-9/12 mb-12 md:mb-0">
-              <img
-                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-                class="w-full"
-                alt="Sample image"
-              />
-            </div>
-            <div class="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0">
-              <form>
-                <div class="mb-6">
-                  <input
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    type="text"
-                    class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                    id="exampleFormControlInput2"
-                    placeholder="Email address"
-                  />
-                </div>
-                <div class="mb-6">
-                  <input
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    type="password"
-                    class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                    id="exampleFormControlInput2"
-                    placeholder="Password"
-                  />
-                </div>
+    <div className="maincontainer h-100">
+      <div className="container-fluid">
+        <div className="row no-gutter">
+          <div className="col-md-6 d-none d-md-flex bg-image p-0">
+            <img src={RegisterImg} alt="login" />
+          </div>
 
-                <div class="text-center lg:text-left">
-                  <button
-                    onClick={handleRegister}
-                    type="button"
-                    class="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-                  >
-                    Login
-                  </button>
-                  <p class="text-sm font-semibold mt-2 pt-1 mb-0">
-                    Already have an account?
-                    <span className="ml-1 text-lg cursor-pointer">
-                      <a
-                        onClick={switchLogin}
-                        class="text-red-600 hover:text-red-700 focus:text-red-700 transition duration-200 ease-in-out"
-                      >
-                        Login
-                      </a>
-                    </span>
-                  </p>
+          <div className="col-md-6 bg-light">
+            <div className="login d-flex align-items-center py-5">
+              <div className="container">
+                <div className="row">
+                  <div className="col-lg-10 col-xl-7 mx-auto">
+                    <h3 className="display-4">Create an account</h3>
+                    <form>
+                      <div className="mb-3">
+                        <input
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          id="inputEmail"
+                          type="email"
+                          placeholder="Email address"
+                          required=""
+                          className="form-control rounded-pill border-0 shadow-sm px-4"
+                        />
+                      </div>
+                      <div className="mb-3">
+                        <input
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                          id="inputPassword"
+                          type="password"
+                          placeholder="Password"
+                          required=""
+                          className="form-control rounded-pill border-0 shadow-sm px-4 text-primary"
+                        />
+                      </div>
+                      <div className="d-grid gap-2 mt-2">
+                        <button
+                          onClick={handleRegister}
+                          type="submit"
+                          className="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm"
+                        >
+                          Sign in
+                        </button>
+                      </div>
+
+                      <div className="text-center d-flex justify-content-between mt-4">
+                        <p className="text-sm font-semibold mt-2 pt-1 mb-0">
+                          Already have an account?{" "}
+                          <span className="ml-1 text-lg cursor-pointer">
+                            {" "}
+                            <a
+                              onClick={switchLogin}
+                              className="text-red-600 hover:text-red-700 focus:text-red-700 transition duration-200 ease-in-out"
+                            >
+                              Login
+                            </a>
+                          </span>
+                        </p>
+                      </div>
+                    </form>
+                  </div>
                 </div>
-              </form>
+              </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 };

@@ -5,7 +5,9 @@
   "dependencies": {
     "@fullcalendar/core": "^6.0.0",
     "@fullcalendar/daygrid": "^6.0.0",
+    "@fullcalendar/interaction": "^6.0.0",
     "@fullcalendar/react": "^6.0.0",
+    "@fullcalendar/timegrid": "^6.0.0",
     "@headlessui/react": "^1.7.6",
     "@heroicons/react": "^2.0.13",
     "@testing-library/jest-dom": "^5.16.5",
@@ -15,10 +17,13 @@
     "firebase": "^9.15.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.0",
+    "react-bootstrap-daterangepicker": "^8.0.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
     "react-modal": "^3.16.1",
     "react-scripts": "5.0.1",
+    "react-select": "^5.7.0",
+    "reactstrap": "^9.1.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
